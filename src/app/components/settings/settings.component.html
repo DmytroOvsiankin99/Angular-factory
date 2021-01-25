@@ -1,1 +1,8 @@
-<p>settings works!</p>
+<div>
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+        <input mat-input type="text"  formControlName="name">
+        <input  type="text" formControlName="address">
+        <button mat-raised-button color="primary" style="display: block; margin: 0 auto;">Submit</button>
+      
+      </form>
+</div>
