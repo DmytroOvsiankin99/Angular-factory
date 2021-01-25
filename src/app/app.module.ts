@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { AbstractDynamicContainer } from './dynamical-components/abstract-dynamic-dashboard.component';
 
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -52,23 +51,17 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard-main/dashboard.component';
 import { DashboardOutletDirective } from './dashboard/dashboard-outlet.directive';
-import { DashboardCardComponent } from './dashboard/dashboard-card/dashboard-card.component';
 import { DashboardDialogComponent } from './dashboard/dashboard-dialog/dashboard-dialog.component';
 import { CommonModule } from '@angular/common';
-import { SettingsConteiner } from './dynamical-components/setting.container';
-import { ShareConteiner } from './dynamical-components/share.container';
 import { BasiclineComponent } from './components/basicline/basicline.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { DashboardService } from './services/dashboard.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AbstractDynamicContainer,
-    SettingsConteiner,
-    ShareConteiner,
     DashboardComponent,
     DashboardOutletDirective,
-    DashboardCardComponent,
     DashboardDialogComponent,
     BasiclineComponent,
     SettingsComponent],
@@ -122,8 +115,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     PortalModule,
     ScrollingModule,
     FormsModule],
-  providers: [],
+  providers: [DashboardService],
   bootstrap: [AppComponent],
-  entryComponents: [SettingsConteiner, ShareConteiner],
+  entryComponents: [BasiclineComponent, SettingsComponent],
 })
 export class AppModule { }

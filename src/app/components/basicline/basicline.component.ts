@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class BasiclineComponent implements OnInit {
 
   // Add basicline to this component
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }

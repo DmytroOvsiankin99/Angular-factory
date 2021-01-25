@@ -1,4 +1,4 @@
 export enum DashboardCards {
   setting = 'setting',
-  share = 'share',
+  basicline = 'basicline',
 }
