@@ -1,11 +1,10 @@
 <mat-dialog-content class="content-wrap">
-    <section class="example-section">
-        <ul>
-            <li *ngFor="let item of list">
-                <mat-checkbox [(ngModel)]="item.completed" [disabled]="item.disabled">{{item.componentName.toUpperCase() + ' ' + item.forWidth + '/1'}}</mat-checkbox>
-            </li>
-        </ul>
-    </section>
+    <mat-radio-group [(ngModel)]="selected">
+        <mat-radio-button [(value)]="item.componentName" *ngFor="let item of list" [disabled]="item.disabled"
+            class="dashboard-radio-btn">
+            {{item.componentName.toUpperCase()
+            + ' ' + item.forWidth + '/1'}}</mat-radio-button>
+    </mat-radio-group>
 </mat-dialog-content>
 <mat-dialog-actions class="action-btns-wrap">
     <button mat-button mat-dialog-close (click)="onApplyClick()">Apply</button>

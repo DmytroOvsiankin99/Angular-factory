@@ -60,16 +60,15 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   };
 
   loadContent = (template: DashboardOutletDirective, item: Item) => {
-    if (!item.componentNames) {
+    if (!item.componentName) {
       return;
     }
     const viewContainerRef = template.viewContainerRef;
     viewContainerRef.clear();
-    for (const el of item.componentNames) {
-      const componentFactory = this.cfr.resolveComponentFactory(dashboardCards[el]);
-      viewContainerRef.createComponent(componentFactory);
-      
-    }
+    const componentFactory = this.cfr.resolveComponentFactory(dashboardCards[item.componentName]);
+    viewContainerRef.createComponent(componentFactory);
+
+
   };
 
   openDialog(track) {
@@ -84,22 +83,18 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (!res) {
         return
       }
-      
+
       for (const item of this.tracks) {
-        if (item.id === res[0].id) {
-          this.updateDashboardItem(item, res[1])
+        if (item.id === res.id) {
+          item.componentName = res.selected
+          this.loadContents()
+          localStorage.setItem('dashboardData', JSON.stringify(this.tracks))
         }
       }
     });
   }
 
-  updateDashboardItem(item, res) {
-    item.componentNames = JSON.parse(JSON.stringify(res.componentNames))
-    this.loadContents()
-    localStorage.setItem('dashboardData', JSON.stringify(this.tracks))
-  }
-
-  clearStorage(){
+  clearStorage() {
     localStorage.clear()
   }
 }

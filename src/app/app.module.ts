@@ -57,6 +57,8 @@ import { DashboardDialogComponent } from './dashboard/dashboard-dialog/dashboard
 import { CommonModule } from '@angular/common';
 import { SettingsConteiner } from './dynamical-components/setting.container';
 import { ShareConteiner } from './dynamical-components/share.container';
+import { BasiclineComponent } from './components/basicline/basicline.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { ShareConteiner } from './dynamical-components/share.container';
     DashboardComponent,
     DashboardOutletDirective,
     DashboardCardComponent,
-    DashboardDialogComponent],
+    DashboardDialogComponent,
+    BasiclineComponent,
+    SettingsComponent],
   imports: [
     CommonModule,
     BrowserModule,

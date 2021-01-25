@@ -9,6 +9,7 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 })
 
 export class DashboardDialogComponent implements OnInit {
+  selected: string = this.data.track.componentName || ''
   list: Array<any> = []
 
   constructor(
@@ -31,11 +32,8 @@ export class DashboardDialogComponent implements OnInit {
   }
 
   onApplyClick(): void {
-    const newArr : Array<any> = [{id : this.data.track.id}, {componentNames : []}] 
-    const test = this.list.filter(el => el.completed === true).map(se=> {
-      newArr[1].componentNames.push(se.componentName)
-    })
-    this.dialogRef.close(newArr)
+    const newObj = {selected: this.selected,  id:  this.data.track.id}
+    this.dialogRef.close(newObj)
   }
 
   onCloseClick() {

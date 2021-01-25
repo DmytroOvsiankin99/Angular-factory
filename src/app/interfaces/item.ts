@@ -1,5 +1,5 @@
 export interface Item {
-  componentNames: Array<string>
+  componentName: string
   id: number
   width: number
   height: number
