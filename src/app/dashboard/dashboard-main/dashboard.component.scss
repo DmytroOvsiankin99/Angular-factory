@@ -1,0 +1,11 @@
+.board {
+  display: flex;
+}
+
+.tracks {
+  border: 1px solid #000;
+  border-radius: 4px;
+  margin: 10px;
+  min-width: 200px;
+  min-height: 200px;
+}

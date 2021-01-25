@@ -1,0 +1,9 @@
+<div class="board">
+  <div *ngFor="let track of tracks; let i = index" (click)="openDialog(track)">
+    <div class="tracks">
+      <div style="margin: 1rem;">
+        <ng-template appDashboardOutlet [item]="track"></ng-template>
+      </div>
+    </div>
+  </div>
+</div>
