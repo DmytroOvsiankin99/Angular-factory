@@ -37,4 +37,5 @@ export class DashboardService {
     {componentName : 'setting', forWidth: 1, completed: false, disabled: false},
     {componentName : 'share', forWidth: 2, completed: false, disabled: false},
   ]
+  
 }

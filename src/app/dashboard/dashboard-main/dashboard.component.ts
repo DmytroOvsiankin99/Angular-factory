@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     viewContainerRef.clear();
     for (const el of item.componentNames) {
       const componentFactory = this.cfr.resolveComponentFactory(dashboardCards[el]);
-      const componentRef = viewContainerRef.createComponent(componentFactory);
+      viewContainerRef.createComponent(componentFactory);
     }
   };
 
@@ -84,6 +84,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       if (!res) {
         return
       }
+      
       for (const item of this.tracks) {
         if (item.id === res[0].id) {
           this.updateDashboardItem(item, res[1])
