@@ -1,11 +1,30 @@
-.board {
-  display: flex;
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 5px 5px;
 }
 
 .tracks {
   border: 1px solid #000;
   border-radius: 4px;
-  margin: 10px;
-  min-width: 200px;
   min-height: 200px;
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+}
+
+.track-inner{
+  position: relative;  
+  height: 100%;
+  cursor: pointer;
+}
+
+.empty-case{
+  display: block;
+  position: absolute;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

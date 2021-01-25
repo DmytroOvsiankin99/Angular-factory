@@ -1,7 +1,15 @@
-<div class="board">
-  <div *ngFor="let track of tracks; let i = index" (click)="openDialog(track)">
+<div (click)="clearStorage()" style="cursor: pointer; margin: 0 auto; width: 50px; height: 20px;"> CLEAR</div>
+<div class="dashboard" #grid>
+  <div *ngFor="let track of tracks" (click)="openDialog(track)" 
+  [style.grid-column-start]="track.x"
+  [style.grid-column-end]="track.x + track.width"
+  [style.grid-row-start]="track.y"
+  [style.grid-row-end]="track.y + track.height">
     <div class="tracks">
-      <div style="margin: 1rem;">
+      <div class="track-inner">
+        <div *ngIf="track.componentNames.length === 0" class="empty-case">
+          Click me
+        </div>
         <ng-template appDashboardOutlet [item]="track"></ng-template>
       </div>
     </div>

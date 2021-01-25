@@ -22,13 +22,11 @@ export class DashboardDialogComponent implements OnInit {
   }
 
   filterList() {
-    this.data.track.componentNames.map(el => {
-      this.list.map(listItem => {
-        if (listItem.componentName === el) {
-          listItem.completed = true
-          return;
-        }
-      })
+    const width = this.data.track.width
+    this.list.map(el => {
+      if(el.forWidth !== width){
+        el.disabled = true
+      }
     })
   }
 

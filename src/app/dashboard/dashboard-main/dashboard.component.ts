@@ -12,7 +12,6 @@ import { DashboardOutletDirective } from '../dashboard-outlet.directive';
 import { Item } from '../../interfaces/item';
 import { dashboardCards } from '../dashboard-cards';
 import { DashboardService } from '../../services/dashboard.service';
-import { DashboardCardComponent } from '../dashboard-card/dashboard-card.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DashboardDialogComponent } from '../dashboard-dialog/dashboard-dialog.component';
 
@@ -30,7 +29,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     private cd: ChangeDetectorRef,
     private cfr: ComponentFactoryResolver,
     private dashboardService: DashboardService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -69,6 +68,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     for (const el of item.componentNames) {
       const componentFactory = this.cfr.resolveComponentFactory(dashboardCards[el]);
       viewContainerRef.createComponent(componentFactory);
+      
     }
   };
 
@@ -99,4 +99,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     localStorage.setItem('dashboardData', JSON.stringify(this.tracks))
   }
 
+  clearStorage(){
+    localStorage.clear()
+  }
 }

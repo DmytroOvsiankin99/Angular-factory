@@ -6,36 +6,29 @@ import { Item } from '../interfaces/item';
   providedIn: 'root',
 })
 export class DashboardService {
-  dashboardDefaultState : Array<Item> = [
+  dashboardDefaultState: Array<Item> = [
     {
-      componentNames: ['setting','share'],
+      componentNames: [],
       id: 1,
-      wdith: 1,
+      width: 1,
       height: 1,
       x: 1,
-      y: 4
+      y: 1
     },
     {
-      componentNames: ['setting'],
+      componentNames: [],
       id: 2,
-      wdith: 2,
-      height: 1,
+      width: 2,
+      height: 2,
       x: 2,
       y: 4
     },
-    {
-      componentNames: ['setting'],
-      id: 3,
-      wdith: 2,
-      height: 1,
-      x: 3,
-      y: 4
-    },
+   
   ];
 
-  dashboardDialogList  = [
-    {componentName : 'setting', forWidth: 1, completed: false, disabled: false},
-    {componentName : 'share', forWidth: 2, completed: false, disabled: false},
+  dashboardDialogList = [
+    { componentName: 'setting', forWidth: 1, completed: false, disabled: false },
+    { componentName: 'share', forWidth: 2, completed: false, disabled: false },
   ]
-  
+
 }
