@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-settings',
@@ -7,21 +7,25 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+  form
 
   // create 3 input and after submit in right up part screen, we must see pop-up with our data(from input)
-  checkoutForm = this.fb.group({
-    name: '',
-    address: '',
-    subscriber: true,
-  });
-  constructor(
-    private fb: FormBuilder,
-    private formGroup: FormGroup) { }
+  
+  constructor() { }
 
   ngOnInit(): void {
+    this.initForm()
   }
 
-  onSubmit(){
-    console.log(this.checkoutForm.value)
+  initForm(){
+    this.form = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      address: new FormControl('', [Validators.required]),
+      subscriber: new FormControl('', [Validators.required]),
+    })
+  }
+
+  submit(){
+    console.log(this.form.value)
   }
 }
