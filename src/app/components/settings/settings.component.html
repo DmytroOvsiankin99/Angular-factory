@@ -1,8 +1,15 @@
 <div>
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-        <input mat-input type="text"  formControlName="name">
-        <input  type="text" formControlName="address">
-        <button mat-raised-button color="primary" style="display: block; margin: 0 auto;">Submit</button>
-      
-      </form>
+  <form [formGroup]="form" (submit)="submit()">
+    <mat-form-field appearance="outline">
+      <input matInput type="text" formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input matInput type="text" formControlName="address">
+    </mat-form-field>
+    <div appearance="outline">
+      <input type="radio" value="yes" formControlName="subscriber" name="gender">
+      <input type="radio" value="no" formControlName="subscriber" name="gender">
+    </div>
+    <button mat-raised-button color="primary" style="display: block; margin: 0 auto;" type="submit">Submit</button>
+  </form>
 </div>
