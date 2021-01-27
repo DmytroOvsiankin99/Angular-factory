@@ -9,8 +9,8 @@ export class TestComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
-        // this.foo()
-        // this.parseStrToNum('-121551')
+        this.foo()
+        this.parseStrToNum('-121551')
         this.parseNumberToStr(-11234567890 )
     }
 
@@ -18,7 +18,7 @@ export class TestComponent implements OnInit {
         let b = 0,
             arr: any = [],
             minus = false,
-            str = ''
+            str 
 
         if (num < 0) {
             minus = true
@@ -56,7 +56,6 @@ export class TestComponent implements OnInit {
             }
         })
 
-        console.log(str)
         return str
     }
 
@@ -70,40 +69,27 @@ export class TestComponent implements OnInit {
             str.shift()
         }
         str.forEach(el => {
-            if (el == 1) {
-                num = (num + 1) * 10
-            }
-            else if (el == 2) {
-                num = (num + 2) * 10
-            }
-            else if (el == 3) {
-                num = (num + 3) * 10
-            }
-            else if (el == 4) {
-                num = (num + 4) * 10
-            }
-            else if (el == 5) {
-                num = (num + 5) * 10
-            }
-            else if (el == 6) {
-                num = (num + 6) * 10
-            }
-            else if (el == 7) {
-                num = (num + 7) * 10
-            }
-            else if (el == 8) {
-                num = (num + 8) * 10
-            }
-            else if (el == 9) {
-                num = (num + 9) * 10
+            switch (el) {
+                case '1': num = (num + 1) * 10; break;
+                case '2': num = (num + 2) * 10; break;
+                case '3': num = (num + 3) * 10; break;
+                case '4': num = (num + 4) * 10; break;
+                case '5': num = (num + 5) * 10; break;
+                case '6': num = (num + 6) * 10; break;
+                case '7': num = (num + 7) * 10; break;
+                case '8': num = (num + 8) * 10; break;
+                case '9': num = (num + 9) * 10; break;
+                case '0': num = (num + 0) * 10; break;
             }
         })
 
         num = num / 10
         if (minus) {
+            console.log(-num)
             return -num
         }
         
+        console.log(num)
         return num
     }
 
@@ -116,44 +102,23 @@ export class TestComponent implements OnInit {
         //in function we use cycle for find item with actual task_id 
         //and if we find it, we should crete new key 'child_nodes' with array value or push in exist value
         //finish
-        let hash = {};
+        let hash: any = {};
         for (let item of this.tasks) {
             hash[item.Task_ID] = item;
         }
 
         for (let item of this.tasks) {
-            if (item.Task_Parent_ID !== undefined) {
-                hash[item.Task_Parent_ID].child_nodes.push(item);
+            if (hash[item.Task_Parent_ID] !== undefined) {
+                if(hash[item.Task_Parent_ID].childsNodes){
+                    hash[item.Task_Parent_ID].childsNodes.push(item)
+                }
+                else{
+                    hash[item.Task_Parent_ID].childsNodes = [item]
+                }
             }
-        }
-
-        let obj: any = {}
-
-        for (const item of this.tasks) {
-            if (`${item.Task_Parent_ID}` in obj) {
-                obj[item.Task_Parent_ID].push(item)
-            }
-            else {
-                obj[item.Task_Parent_ID] = [item]
-            }
-        }
-
-        console.log(obj)
-
-        for (const item of this.tasks) {
-            let currentID = JSON.parse(JSON.stringify(item.Task_ID));
-            if (obj[currentID] === undefined) {
-                continue;
-            }
-
-            let arrayNodes = JSON.parse(JSON.stringify(obj[currentID]))
-
-            item.child_nodes = [...arrayNodes]
         }
 
         console.log(this.tasks)
-
-        //parse string to number
     }
 
     tasks: any = [{
