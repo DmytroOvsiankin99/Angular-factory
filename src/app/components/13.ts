@@ -31,6 +31,22 @@ export class TestComponent implements OnInit {
     //and if we find it, we should crete new key 'child_nodes' with array value or push in exist value
     //finish
 
+     let hash ={};
+    for(let item of this.tasks)
+    {
+        hash[item.Task_ID] = item;
+    }
+
+    for(let item of this.tasks)
+    {
+        if(item.Task_Parent_ID !== undefined)
+        {
+            hash[item.Task_Parent_ID].child_nodes.push(item);
+        }
+    }
+    ///////////////////////
+    
+    
     let obj: any = {}
 
     for (const item of this.tasks) {
