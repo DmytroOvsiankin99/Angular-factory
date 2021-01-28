@@ -6,6 +6,11 @@ import {
   ChangeDetectorRef,
   ComponentFactoryResolver,
   AfterViewInit,
+  ViewChild,
+  ViewContainerRef,
+  Directive,
+  ElementRef,
+  HostListener
 } from '@angular/core';
 
 import { DashboardOutletDirective } from '../dashboard-outlet.directive';
@@ -14,6 +19,22 @@ import { dashboardCards } from '../dashboard-cards';
 import { DashboardService } from '../../services/dashboard.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DashboardDialogComponent } from '../dashboard-dialog/dashboard-dialog.component';
+import { SettingNotificationComponent } from 'src/app/components/setting-notification/setting-notification.component';
+import { Subject } from 'rxjs';
+
+@Directive({
+  selector: '[mouseEvent]'
+})
+export class SomethingDirective{
+  constructor(private ds: DashboardService,
+    private elementRef : ElementRef){
+  }
+
+  @HostListener('mousemove' , ['$event'])
+  onmousemove(event){
+    
+  }
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +43,8 @@ import { DashboardDialogComponent } from '../dashboard-dialog/dashboard-dialog.c
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChildren(DashboardOutletDirective) dashboardOutlet!: QueryList<DashboardOutletDirective>;
+  @ViewChild ('containerNotifications', {read: ViewContainerRef}) containerNotifications!: ViewContainerRef
+  sub = new Subject<any>()
 
   tracks: Array<Item> = [];
 
@@ -67,8 +90,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     viewContainerRef.clear();
     const componentFactory = this.cfr.resolveComponentFactory(dashboardCards[item.componentName]);
     viewContainerRef.createComponent(componentFactory);
-
-
   };
 
   openDialog(track) {
@@ -92,6 +113,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         }
       }
     });
+  }
+
+  create(item){
+    const componentFactory = this.cfr.resolveComponentFactory(SettingNotificationComponent);
+    const component = this.containerNotifications.createComponent(componentFactory);
+    component.instance.value = item
   }
 
   clearStorage() {

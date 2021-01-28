@@ -1,0 +1,49 @@
+.blackTheme{
+    background: #000;
+    fill: #000;
+    color: #fff;
+}
+
+.whiteTheme{
+    background: #fff;
+    fill: #fff;
+}
+
+.greyTheme{ 
+    background: grey;
+    fill: grey;
+}
+
+.switch-theme-menu{
+    position: fixed;
+    display: block;
+    left: -200px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 100px;
+    transition: 1s;
+    background: orange;
+    z-index: 100;
+}
+
+.switch-theme-menu::after{
+    content: '';
+    display: block;
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    background: green;
+    transition: 1s;
+}
+
+.visible{
+    left: 0 !important;
+}
+
+.visible::after{
+    right: 200px;
+}

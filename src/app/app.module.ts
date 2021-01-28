@@ -48,14 +48,22 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { FormsModule } from '@angular/forms';
-import { DashboardComponent } from './dashboard/dashboard-main/dashboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent, SomethingDirective } from './dashboard/dashboard-main/dashboard.component';
 import { DashboardOutletDirective } from './dashboard/dashboard-outlet.directive';
 import { DashboardDialogComponent } from './dashboard/dashboard-dialog/dashboard-dialog.component';
 import { CommonModule } from '@angular/common';
 import { BasiclineComponent } from './components/basicline/basicline.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { DashboardService } from './services/dashboard.service';
+import { SettingNotificationComponent } from './components/setting-notification/setting-notification.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { TestComponent } from './components/test/test.component';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { AutocompleteService } from './services/autocomplete.service';
+import { AutocompeleteDataComponent } from './components/autocompelete-data/autocompelete-data.component';
+import { GridTableComponent } from './components/grid-table/grid-table.component';
 
 @NgModule({
   declarations: [
@@ -64,8 +72,17 @@ import { DashboardService } from './services/dashboard.service';
     DashboardOutletDirective,
     DashboardDialogComponent,
     BasiclineComponent,
-    SettingsComponent],
+    SettingsComponent,
+    SettingNotificationComponent,
+    NavigationComponent,
+    TestComponent,
+    SomethingDirective,
+    AutocompleteComponent,
+    AutocompeleteDataComponent,
+    GridTableComponent
+    ],
   imports: [
+    HighchartsChartModule,
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -114,8 +131,12 @@ import { DashboardService } from './services/dashboard.service';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    ReactiveFormsModule,
     FormsModule],
-  providers: [DashboardService],
+  providers: [
+    DashboardService,
+    AutocompleteService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [BasiclineComponent, SettingsComponent],
 })

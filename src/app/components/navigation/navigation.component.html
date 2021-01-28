@@ -1,0 +1,10 @@
+<div [ngClass]="{whiteTheme: theme === '1', blackTheme: theme ==='2' , greyTheme : theme ==='3'}">
+    <div class="switch-theme-menu" (click)="visible()" [ngClass]="{visible: visibleVar}">
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="theme">
+            <mat-radio-button class="example-radio-button" *ngFor="let item of currentClass" [value]="item.value">
+                {{item.text}} </mat-radio-button>
+        </mat-radio-group>
+
+    </div>
+    <app-dashboard></app-dashboard>
+</div>

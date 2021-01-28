@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef , EventEmitter, Output, Inject} from '@angular/core';
+import { inject } from '@angular/core/testing';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DashboardComponent } from 'src/app/dashboard/dashboard-main/dashboard.component';
+import { SettingNotificationComponent } from '../setting-notification/setting-notification.component';
 
 @Component({
   selector: 'app-settings',
@@ -7,25 +10,23 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-  form
+  @ViewChild ('containerNotifications', {read: ViewContainerRef}) containerNotifications!: ViewContainerRef
 
-  // create 3 input and after submit in right up part screen, we must see pop-up with our data(from input)
-  
-  constructor() { }
+  form: FormGroup
 
-  ngOnInit(): void {
-    this.initForm()
-  }
-
-  initForm(){
+  constructor(@Inject(DashboardComponent) private parent: DashboardComponent,
+    private componentFactoryResolver: ComponentFactoryResolver) {
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      subscriber: new FormControl('', [Validators.required]),
+      name: new FormControl(''),
+      address: new FormControl(''),
+      remote: new FormControl('yes'),
     })
   }
 
-  submit(){
-    console.log(this.form.value)
+  ngOnInit(): void {  
+  }
+
+  submit() {
+    this.parent.create(this.form.value)
   }
 }

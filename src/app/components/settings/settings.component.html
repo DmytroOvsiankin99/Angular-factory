@@ -1,15 +1,18 @@
 <div>
-  <form [formGroup]="form" (submit)="submit()">
+  <form [formGroup]="form" (ngSubmit)="submit()">
     <mat-form-field appearance="outline">
-      <input matInput type="text" formControlName="name">
+      <input matInput type="text" formControlName="name" placeholder="Name">
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <input matInput type="text" formControlName="address">
+      <input matInput type="text" formControlName="address" placeholder="Address">
     </mat-form-field>
     <div appearance="outline">
-      <input type="radio" value="yes" formControlName="subscriber" name="gender">
-      <input type="radio" value="no" formControlName="subscriber" name="gender">
+      <p>Remote: </p>
+      <label for="yes" style="margin: 0 15px 0 0;">
+        <input type="radio" value="yes" id="yes" formControlName="remote" name="remote">Yes</label>
+      <label for="no">
+        <input type="radio" value="no" id="no" formControlName="remote" name="remote">No</label>
     </div>
-    <button mat-raised-button color="primary" style="display: block; margin: 0 auto;" type="submit">Submit</button>
+    <button mat-raised-button color="primary" style="display: block; margin: 10px auto 0;" type="submit">Submit</button>
   </form>
 </div>

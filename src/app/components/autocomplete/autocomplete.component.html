@@ -1,0 +1,11 @@
+<div>
+  <label class="wrapper-input-autocomplete" for='1'>
+      <div *ngFor="let item of list" class="cityListInner">
+        {{item.city}}
+        <span (click)="removeItem(item)" style="cursor: pointer; ">x</span>
+      </div>
+      <input type="text" [(ngModel)]="autocompleteChanges" placeholder="Autocomplete" id='1'
+        class="input-for-complete" #inputRef>
+  </label>
+  <app-autocompelete-data [str]='autocompleteChanges' (addItemEvent)="addItemEvent($event)"></app-autocompelete-data>
+</div>

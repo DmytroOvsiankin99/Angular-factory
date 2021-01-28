@@ -1,0 +1,5 @@
+<div *ngIf="str.length !== 0">
+    <div *ngFor="let item of currentData" class="listItems" (click)="addItem(item)">
+        {{item.city}}
+    </div>
+</div>

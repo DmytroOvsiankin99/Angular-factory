@@ -9,28 +9,26 @@ export class TestComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
-        this.foo()
-        this.parseStrToNum('-121551')
-        this.parseNumberToStr(-11234567890 )
+        // this.foo()
+        // this.parseStrToNum('-121551')
+        // this.parseNumberToStr(-11234567890 )
     }
 
     parseNumberToStr(num) {
+        const letters=['0','1','2','3','4','5','6','7','8','9'];
         let b = 0,
             arr: any = [],
             minus = false,
-            str 
-
+            str
         if (num < 0) {
             minus = true
             num = -num
         }
-
         for (let i = 0; i < 32; i++) {
             if (num === 0){
-                arr.push(num)
-                break
+                arr.push(num);
+                break;
             }
-
             b = Math.floor(num % 10)
             num = num / 10
             arr.unshift(b)
@@ -39,23 +37,11 @@ export class TestComponent implements OnInit {
             }
         }
 
-        minus ? str = '-' : str = ''
-
+        minus ? str = '-' : str = '';
         arr.forEach(el => {
-            switch (el) {
-                case 1: str = str.concat('1'); break;
-                case 2: str = str.concat('2'); break;
-                case 3: str = str.concat('3'); break;
-                case 4: str = str.concat('4'); break;
-                case 5: str = str.concat('5'); break;
-                case 6: str = str.concat('6'); break;
-                case 7: str = str.concat('7'); break;
-                case 8: str = str.concat('8'); break;
-                case 9: str = str.concat('9'); break;
-                case 0: str = str.concat('0'); break;
-            }
+            str += letters[el]; //str.concat(el)
         })
-
+        console.log(str)
         return str
     }
 
@@ -63,7 +49,6 @@ export class TestComponent implements OnInit {
         str = str.split('')
         let num = 0,
             minus = false
-
         if (str[0] === '-') {
             minus = true
             str.shift()
@@ -82,13 +67,11 @@ export class TestComponent implements OnInit {
                 case '0': num = (num + 0) * 10; break;
             }
         })
-
         num = num / 10
         if (minus) {
             console.log(-num)
             return -num
         }
-        
         console.log(num)
         return num
     }

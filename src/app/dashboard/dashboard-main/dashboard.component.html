@@ -1,17 +1,24 @@
+<app-grid-table></app-grid-table>
+<app-autocomplete></app-autocomplete>
 <div (click)="clearStorage()" style="cursor: pointer; margin: 0 auto; width: 50px; height: 20px;"> CLEAR</div>
-<div class="dashboard" #grid>
-  <div *ngFor="let track of tracks" (click)="openDialog(track)" 
+<div class="dashboard" mouseEvent>
+  <div *ngFor="let track of tracks" 
   [style.grid-column-start]="track.x"
   [style.grid-column-end]="track.x + track.width"
   [style.grid-row-start]="track.y"
   [style.grid-row-end]="track.y + track.height">
     <div class="tracks">
       <div class="track-inner">
-        <div *ngIf="track.componentName.length === 0" class="empty-case">
-          Click me
+        <div class="click-btn-case" (click)="openDialog(track)">
+          
         </div>
         <ng-template appDashboardOutlet [item]="track"></ng-template>
       </div>
     </div>
   </div>
 </div>
+
+<div class="notigicationWrap">
+  <ng-template #containerNotifications></ng-template>
+</div>
+<app-test></app-test>

@@ -1,0 +1,22 @@
+.mh{
+    min-height: 100vh;
+}
+
+.wrapper-input-autocomplete{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+.input-for-complete{
+    border: 0;
+    outline: none;
+    flex-grow: 1;
+}
+
+.cityListInner{
+    padding-right: 8px;
+}
