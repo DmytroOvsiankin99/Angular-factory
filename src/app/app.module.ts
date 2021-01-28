@@ -57,7 +57,6 @@ import { BasiclineComponent } from './components/basicline/basicline.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { DashboardService } from './services/dashboard.service';
 import { SettingNotificationComponent } from './components/setting-notification/setting-notification.component';
-import { HighchartsChartModule } from 'highcharts-angular';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { TestComponent } from './components/test/test.component';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
@@ -82,7 +81,6 @@ import { GridTableComponent } from './components/grid-table/grid-table.component
     GridTableComponent
     ],
   imports: [
-    HighchartsChartModule,
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
