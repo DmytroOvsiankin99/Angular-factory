@@ -63,6 +63,7 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
 import { AutocompleteService } from './services/autocomplete.service';
 import { AutocompeleteDataComponent } from './components/autocompelete-data/autocompelete-data.component';
 import { GridTableComponent } from './components/grid-table/grid-table.component';
+import { TableComponent } from './components/grid-table/table/table.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { GridTableComponent } from './components/grid-table/grid-table.component
     SomethingDirective,
     AutocompleteComponent,
     AutocompeleteDataComponent,
-    GridTableComponent
+    GridTableComponent,
+    TableComponent
     ],
   imports: [
     CommonModule,
@@ -130,6 +132,7 @@ import { GridTableComponent } from './components/grid-table/grid-table.component
     PortalModule,
     ScrollingModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
     FormsModule],
   providers: [
     DashboardService,

@@ -1,0 +1,19 @@
+<div style="overflow-x: auto">
+        <table mat-table matSort [dataSource]="dataSource" class="table">
+            <ng-container *ngFor="let columns of displayedColumns; index as i"
+                [matColumnDef]='columns.dataField || columns.caption'>
+                <mat-header-cell *matHeaderCellDef [style.width]="columns.width + 'px'" mat-sort-header>{{columns.dataField ||
+                    columns.caption}} </mat-header-cell>
+                <div *ngIf="columns.caption">
+                    <mat-cell *matCellDef="let row" [style.width]="columns.width + 'px'">{{row.Title + ' ' + row.FirstName + ' ' + row.LastName}} </mat-cell>
+                </div>
+                <mat-cell *matCellDef="let row" [style.width]="columns.width + 'px'"> {{row[columns.dataField]}} </mat-cell>
+            </ng-container>
+    
+            <mat-header-row *matHeaderRowDef="columnsHeader" ></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columnsHeader;"></mat-row>
+        </table>    
+        <div>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+        </div>
+</div>

@@ -8,7 +8,6 @@ export class GridTableService {
 
   constructor() { }
 
-
   getSerrings(): Observable<any> {
     return of(this.columnsSettings)
   }
@@ -16,7 +15,6 @@ export class GridTableService {
   getDataGrid(): Observable<any> {
     return of(this.dataGrid)
   }
-
   
   dataGrid: any = [{
     "ID": 1,
@@ -197,22 +195,23 @@ export class GridTableService {
     },
     {
       dataField: "BirthDate",
+      width: 230,
+      position: 3
     },
     {
       dataField: "HireDate",
+      width: 230,
+      position: 1
     },
     {
       dataField: "Position",
     },
     {
       dataField: "Address",
+      position: 4
     },
     {
       dataField: "Zipcode",
-    },
-    "HomePhone",
-    "MobilePhone",
-    "Skype",
-    "Email"]
+    }]
 
 }

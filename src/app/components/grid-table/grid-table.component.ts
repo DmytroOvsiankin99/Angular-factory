@@ -7,22 +7,14 @@ import { GridTableService } from 'src/app/services/grid-table.service';
   styleUrls: ['./grid-table.component.scss']
 })
 export class GridTableComponent implements OnInit {
-  data: any = []
-  settings: any = []
+  data: any = [];
+  columns: any = [];
 
   constructor(private gridTableService: GridTableService) { }
 
   ngOnInit(): void {
-    this.gridTableService.getSerrings().subscribe(el => this.settings = el)
-    this.gridTableService.getDataGrid().subscribe(el => this.data = el)
-    this.parseData()
-  }
-
-  parseData() {
-    console.log(this.data, this.settings)
-    this.data.forEach(el => {
-
-    })
+    this.gridTableService.getSerrings().subscribe(el => this.columns = el);
+    this.gridTableService.getDataGrid().subscribe(el => this.data = el);
   }
 
 }
